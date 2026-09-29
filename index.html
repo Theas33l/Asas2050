@@ -25,7 +25,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* خلفية معتمة بذكاء وتدرج متناسق يبرز تفاصيل النخيل والنيون */
     body {
       background-color: #020806;
       background-image: 
@@ -43,7 +42,6 @@
       padding: 0;
     }
 
-    /* الحاوية الجذرية بنظام Flexbox */
     .app-flex-root {
       display: flex;
       flex-direction: column;
@@ -53,7 +51,6 @@
       gap: 24px;
     }
 
-    /* الهيدر بنظام Flexbox */
     .app-header {
       display: flex;
       flex-direction: row;
@@ -93,6 +90,10 @@
       text-align: right;
     }
 
+    [dir="ltr"] .brand-group {
+      text-align: left;
+    }
+
     .brand-title {
       font-size: 22px;
       font-weight: 700;
@@ -119,7 +120,6 @@
       filter: drop-shadow(0 0 6px var(--neon-emerald));
     }
 
-    /* الحاوية المرنة الرئيسية */
     .content-flex-container {
       display: flex;
       flex-direction: row;
@@ -130,7 +130,6 @@
       align-items: stretch;
     }
 
-    /* Flex Item 1: الرؤى والـ 150 كلمة */
     .visions-flex-item {
       display: flex;
       flex-direction: column;
@@ -139,7 +138,6 @@
       gap: 18px;
     }
 
-    /* Flex Item 2: كود Linktree */
     .linktree-flex-item {
       display: flex;
       flex-direction: column;
@@ -160,6 +158,10 @@
       text-align: right;
     }
 
+    [dir="ltr"] .hero-section {
+      text-align: left;
+    }
+
     .hero-badge-line {
       display: inline-flex;
       align-items: center;
@@ -171,6 +173,16 @@
     }
 
     .hero-badge-line::after {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 1.5px;
+      background: var(--neon-emerald);
+      opacity: 0.7;
+    }
+
+    [dir="ltr"] .hero-badge-line::after { display: none; }
+    [dir="ltr"] .hero-badge-line::before {
       content: "";
       display: inline-block;
       width: 40px;
@@ -199,94 +211,29 @@
       color: #b5d5c7;
     }
 
-    /* شريط البحث */
-    .search-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 14px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      position: relative;
-    }
-
-    .input-wrapper {
-      position: relative;
+    /* شريط إرشادي أنيق بدلاً من خانة الإدخال */
+    .selection-guide-banner {
       display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .vision-input {
-      flex: 1 1 auto;
-      background: rgba(2, 14, 10, 0.9);
-      border: 1px solid rgba(0, 255, 170, 0.25);
-      border-radius: 12px;
-      padding: 13px 16px;
-      color: #ffffff;
-      font-size: 15px;
-      outline: none;
-      transition: all 0.25s ease;
-      text-align: right;
-    }
-
-    .vision-input:focus {
-      border-color: var(--neon-emerald);
-      box-shadow: 0 0 14px rgba(0, 255, 170, 0.3);
-    }
-
-    .search-action-btn {
-      background: linear-gradient(135deg, #00c57c, #00a466);
-      border: none;
-      border-radius: 12px;
-      padding: 0 22px;
-      color: #031b12;
-      font-weight: 700;
-      font-size: 14.5px;
-      cursor: pointer;
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
+      gap: 10px;
+      background: rgba(3, 24, 17, 0.65);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 18px;
+      color: #bce3d2;
+      font-size: 13.5px;
+      backdrop-filter: blur(10px);
+    }
+
+    .guide-icon {
+      width: 18px;
+      height: 18px;
+      stroke: var(--neon-emerald);
+      fill: none;
+      stroke-width: 2.2;
       flex-shrink: 0;
     }
 
-    .search-action-btn:hover {
-      background: linear-gradient(135deg, #00e38f, #00ba74);
-      transform: translateY(-1px);
-    }
-
-    .suggestions-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(2, 16, 11, 0.97);
-      border: 1px solid var(--neon-emerald);
-      border-radius: 12px;
-      margin-top: 6px;
-      max-height: 220px;
-      overflow-y: auto;
-      z-index: 100;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-    }
-
-    .suggestion-item {
-      padding: 11px 16px;
-      font-size: 14px;
-      color: #d1ece0;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(0, 255, 170, 0.08);
-      text-align: right;
-    }
-
-    .suggestion-item:hover {
-      background: rgba(0, 255, 170, 0.18);
-      color: #fff;
-    }
-
-    /* تصنيفات الكلمات */
     .categories-bar {
       display: flex;
       flex-direction: row;
@@ -320,12 +267,11 @@
       color: #fff;
     }
 
-    /* شبكة الـ 150 كلمة */
     .words-flex-wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      max-height: 260px;
+      max-height: 270px;
       overflow-y: auto;
       padding-right: 4px;
       scrollbar-width: thin;
@@ -340,23 +286,23 @@
       border: 1px solid rgba(0, 255, 170, 0.22);
       color: #bee2d4;
       font-size: 12.5px;
-      padding: 6px 14px;
+      padding: 7px 15px;
       border-radius: 18px;
       cursor: pointer;
       transition: all 0.2s ease;
+      user-select: none;
     }
 
-    .word-badge:hover {
-      background: rgba(0, 255, 170, 0.22);
+    .word-badge:hover, .word-badge.active-badge {
+      background: rgba(0, 255, 170, 0.25);
       border-color: var(--neon-emerald);
       color: #ffffff;
       transform: scale(1.04);
-      box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+      box-shadow: 0 0 12px rgba(0, 255, 170, 0.35);
     }
 
-    /* بطاقة الرؤية الناتجة */
     .vision-output-card {
-      display: none;
+      display: block;
       background: rgba(2, 20, 14, 0.92);
       border: 1px solid rgba(0, 255, 170, 0.45);
       border-radius: 16px;
@@ -407,7 +353,13 @@
       padding-right: 14px;
     }
 
-    /* بطاقة كود Linktree */
+    [dir="ltr"] .single-vision-content {
+      border-right: none;
+      border-left: 3px solid var(--neon-emerald);
+      padding-right: 0;
+      padding-left: 14px;
+    }
+
     .linktree-card {
       display: flex;
       flex-direction: column;
@@ -459,7 +411,6 @@
       line-height: 1.6;
     }
 
-    /* التذييل */
     .footer-section {
       display: flex;
       flex-direction: column;
@@ -467,6 +418,10 @@
       padding-top: 24px;
       gap: 12px;
       text-align: right;
+    }
+
+    [dir="ltr"] .footer-section {
+      text-align: left;
     }
 
     .footer-expo-badge {
@@ -508,6 +463,11 @@
       margin-left: auto;
     }
 
+    [dir="ltr"] .social-handle {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
     .social-icon-btn {
       width: 38px;
       height: 38px;
@@ -547,13 +507,13 @@
           <line x1="2" y1="12" x2="22" y2="12"></line>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>
-        <span>العربية | English</span>
+        <span id="langBtnText">العربية | English</span>
       </button>
 
       <div class="brand-group">
         <div>
-          <h1 class="brand-title">أساس حساوي</h1>
-          <span class="brand-sub">رؤية الأحساء 2050</span>
+          <h1 class="brand-title" id="txtBrandTitle">أساس حساوي</h1>
+          <span class="brand-sub" id="txtBrandSub">رؤية الأحساء 2050</span>
         </div>
         <svg class="palm-icon" viewBox="0 0 24 24">
           <line x1="12" y1="22" x2="12" y2="8"></line>
@@ -569,22 +529,20 @@
     <main class="content-flex-container">
       <section class="visions-flex-item">
         <div class="hero-section">
-          <div class="hero-badge-line">رؤية الأحساء • 2050</div>
-          <h2 class="hero-heading">كيف تتخيل الأحساء<br><span>في المستقبل؟</span></h2>
-          <p class="hero-desc">
-            استكشف مستقبل الأحساء عام 2050 عبر مكتبة تضم 150 رؤية، أو اكتب أي فكرة ودع الذكاء الاصطناعي يرسم أفقها.
+          <div class="hero-badge-line" id="txtHeroBadge">رؤية الأحساء • 2050</div>
+          <h2 class="hero-heading" id="txtHeroHead">كيف تتخيل الأحساء<br><span>في المستقبل؟</span></h2>
+          <p class="hero-desc" id="txtHeroDesc">
+            استكشف أفق الأحساء عام 2050 عبر 150 رؤية؛ اختر التصنيف ثم اضغط على أي كلمة لعرض رؤيتها المستقبلية مباشرة.
           </p>
         </div>
 
-        <div class="search-panel">
-          <div class="input-wrapper">
-            <input type="text" id="searchInput" class="vision-input" placeholder="ابحث بين 150 رؤية أو اكتب أي كلمة..." oninput="handleSearchInput()" onkeypress="handleKey(event)">
-            <button class="search-action-btn" onclick="submitSearch()">
-              <span>استكشف</span>
-              <span style="color:#003423; font-weight:bold;">↗</span>
-            </button>
-          </div>
-          <div class="suggestions-dropdown" id="suggestionsBox"></div>
+        <div class="selection-guide-banner">
+          <svg class="guide-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span id="txtGuideBanner">اضغط على أي كلمة من القائمة بالأسفل لاستكشاف الرؤية:</span>
         </div>
 
         <div class="categories-bar" id="categoriesBar"></div>
@@ -595,7 +553,7 @@
           <div class="result-header-row">
             <div class="result-title">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
-              <span>رؤية الأحساء 2050</span>
+              <span id="outputTitle">رؤية الأحساء 2050</span>
             </div>
             <span class="input-tag-display" id="outputBadge">النخيل</span>
           </div>
@@ -609,19 +567,19 @@
             <img src="linkt.jpg" alt="كود Linktree" class="tree-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://linkedin.com/in/aseel-alsaif-41b53a393';">
           </div>
 
-          <h3 class="tree-title">منصاتي وأعمالي</h3>
-          <p class="tree-subtitle">امسح الكود عبر الكاميرا للوصول السريع إلى كافة الروابط والمشاريع</p>
+          <h3 class="tree-title" id="txtTreeTitle">منصاتي وأعمالي</h3>
+          <p class="tree-subtitle" id="txtTreeSub">امسح الكود عبر الكاميرا للوصول السريع إلى كافة الروابط والمشاريع</p>
         </section>
       </aside>
     </main>
 
     <footer class="footer-section">
-      <div class="footer-expo-badge">
+      <div class="footer-expo-badge" id="txtExpo">
         من قلب الأحساء، نفتح نافذة على المستقبل.<br>معرض اليوم الوطني السعودي 2026
       </div>
-      <div class="author-name">أسيل السيف</div>
-      <div class="author-role">مصممة تقنية وجرافيكس</div>
-      <p class="author-bio">
+      <div class="author-name" id="txtAuthorName">أسيل السيف</div>
+      <div class="author-role" id="txtAuthorRole">مصممة تقنية وجرافيكس</div>
+      <p class="author-bio" id="txtAuthorBio">
         طالبة نظم معلومات حاسوبية مهتمة بدمج التقنية والإبداع لصناعة تجارب رقمية وبصرية مميزة. أعمل في التصميم وصناعة المحتوى، وأهتم بالتقديم والتحدث والتصوير، وأسعى دائماً لتحويل الأفكار إلى تجارب واضحة ومؤثرة تجمع بين التقنية والإبداع.
       </p>
 
@@ -648,159 +606,43 @@
   </div>
 
   <script>
-    const visionsDatabase = [
-      { cat: "nature", word: "النخيل", text: "في 2050، تصبح نخيل الأحساء جزءًا من منظومة زراعية ذكية تحافظ على إرث الواحة وتزيد كفاءة الإنتاج والمياه." },
-      { cat: "nature", word: "الواحة", text: "تبقى واحة الأحساء قلب المكان، لكن بقدرات ذكية تجعل الطبيعة والزراعة والمدينة تعمل بتناغم." },
-      { cat: "nature", word: "الماء", text: "تتحول إدارة المياه في الأحساء إلى نموذج ذكي يوازن بين احتياجات السكان والزراعة ويحافظ على المورد للأجيال القادمة." },
-      { cat: "nature", word: "العيون", text: "تُعاد قراءة عيون الأحساء كجزء من منظومة طبيعية وسياحية تحكي قصة الماء الذي صنع حياة الواحة." },
-      { cat: "nature", word: "الزراعة", text: "تجمع زراعة الأحساء بين المعرفة المتوارثة والتقنيات الحديثة لإنتاج غذاء أكثر كفاءة واستدامة." },
-      { cat: "nature", word: "التربة", text: "تقنيات الاستشعار والبيانات تساعد مزارعي الأحساء على فهم التربة وتحسينها بدل الاعتماد على التخمين." },
-      { cat: "nature", word: "النخلة", text: "تظل النخلة رمزًا حساويًا حاضرًا في المستقبل، من المزرعة التقليدية إلى الزراعة الرقمية." },
-      { cat: "nature", word: "التمور", text: "تتحول تمور الأحساء إلى منتج عالمي عالي القيمة تدعمه تقنيات الإنتاج والتصنيع والتسويق الذكي." },
-      { cat: "nature", word: "المزارع", text: "يصبح المزارع شريكًا في التقنية، يستخدم البيانات والأدوات الذكية لاتخاذ قرارات أدق وأسرع." },
-      { cat: "nature", word: "البيئة", text: "مستقبل الأحساء يبني علاقة متوازنة بين النمو العمراني وحماية البيئة الطبيعية للواحة." },
-      { cat: "nature", word: "التشجير", text: "تمتد المساحات الخضراء في الأحساء لتصنع مدنًا أكثر راحة وتخفف أثر الحرارة وتحسن جودة الحياة." },
-      { cat: "nature", word: "المناخ", text: "تصمم الأحساء حلولها المستقبلية بما يتناسب مع مناخها المحلي بدل استيراد نماذج لا تناسب طبيعتها." },
-      { cat: "nature", word: "الشمس", text: "تتحول شمس الأحساء الوفيرة إلى مصدر طاقة يدعم المنازل والمزارع والمرافق المستقبلية." },
-      { cat: "nature", word: "الهواء", text: "تساعد تقنيات الرصد البيئي في بناء فهم لحظي لجودة الهواء واتخاذ إجراءات تحافظ على صحة البيئة." },
-      { cat: "nature", word: "التنوع الحيوي", text: "تحافظ الأحساء على تنوعها الطبيعي وتستخدم التقنية لمراقبة الأنواع والموائل وحمايتها." },
-      { cat: "nature", word: "الصحراء", text: "تتحول الصحراء المحيطة بالأحساء من مساحة مهملة إلى جزء من منظومة سياحية وبيئية مستقبلية." },
-      { cat: "nature", word: "النظم البيئية", text: "تتكامل الواحة والصحراء والمناطق العمرانية ضمن رؤية واحدة تحمي التوازن الطبيعي للأحساء." },
-      { cat: "nature", word: "الاستدامة", text: "تصبح الاستدامة أسلوبًا في تصميم المدينة والزراعة والطاقة والنقل، لا مجرد شعار للمستقبل." },
-      { cat: "nature", word: "إعادة التدوير", text: "تتحول النفايات إلى موارد جديدة من خلال منظومة فرز وإعادة تدوير ذكية تبدأ من المنزل وتنتهي بمنتج جديد." },
-      { cat: "nature", word: "الغذاء", text: "تبني الأحساء منظومة غذائية محلية أكثر ذكاءً تربط المزارع بالمستهلك وتقلل الهدر." },
-      { cat: "heritage", word: "التراث", text: "لا يبقى تراث الأحساء في الماضي؛ بل ينتقل إلى المستقبل عبر تجارب رقمية تعيد تقديمه للأجيال." },
-      { cat: "heritage", word: "الهوية", text: "تحافظ الأحساء على هويتها وهي تتطور، لتثبت أن الحداثة لا تعني فقدان الجذور." },
-      { cat: "heritage", word: "القيصرية", text: "تتحول القيصرية إلى تجربة تجارية وثقافية تجمع روح السوق التاريخي مع تقنيات المستقبل." },
-      { cat: "heritage", word: "جبل القارة", text: "يصبح جبل القارة بوابة لتجربة سياحية تجمع الجيولوجيا والطبيعة والتقنية في قصة واحدة." },
-      { cat: "heritage", word: "مسجد جواثا", text: "يُعاد تقديم مسجد جواثا للأجيال الجديدة بتجارب رقمية تشرح مكانته التاريخية وتربط الماضي بالحاضر." },
-      { cat: "heritage", word: "الحرف", text: "تنتقل الحرف الأحسائية إلى أسواق العالم من خلال منصات رقمية تحفظ مهارات صانعيها وتدعم منتجاتهم." },
-      { cat: "heritage", word: "السدو", text: "يتحول السدو إلى لغة تصميم معاصرة تستلهم الأنماط المحلية دون أن تفقد أصلها." },
-      { cat: "heritage", word: "الفخار", text: "يجتمع الفخار التقليدي مع التصميم الحديث ليصبح جزءًا من اقتصاد إبداعي حساوي جديد." },
-      { cat: "heritage", word: "العمارة", text: "تستلهم عمارة الأحساء المستقبلية تفاصيلها من البيئة المحلية وتعيد تفسيرها بلغة معمارية حديثة." },
-      { cat: "heritage", word: "البيوت الطينية", text: "تتحول البيوت الطينية من آثار صامتة إلى مساحات حية للتعلم والثقافة والتجارب الرقمية." },
-      { cat: "heritage", word: "القصص", text: "تصبح قصص الأحساء مادة رقمية ترويها الأجيال الجديدة بوسائط تفاعلية تصل إلى العالم." },
-      { cat: "heritage", word: "اللهجة", text: "تبقى اللهجة الحساوية جزءًا من الهوية الرقمية للمنطقة، حاضرة في المحتوى والتجارب الذكية." },
-      { cat: "heritage", word: "الموروث", text: "يُوثق الموروث الشعبي رقميًا حتى لا تضيع التفاصيل الصغيرة التي صنعت ذاكرة الأحساء." },
-      { cat: "heritage", word: "الموسيقى", text: "يجد التراث الموسيقي الحساوي مساحة جديدة في المشهد الإبداعي والتقني للمستقبل." },
-      { cat: "heritage", word: "الفن", text: "تصبح الأحساء مساحة يلتقي فيها الفن المحلي مع التقنيات الحديثة لصناعة تجارب غير تقليدية." },
-      { cat: "heritage", word: "المتاحف", text: "تتحول متاحف الأحساء إلى تجارب تفاعلية تجعل الزائر يعيش التاريخ بدل الاكتفاء بمشاهدته." },
-      { cat: "heritage", word: "الأرشيف", text: "يحفظ أرشيف رقمي شامل صور ووثائق وذكريات الأحساء لتبقى متاحة للأجيال القادمة." },
-      { cat: "heritage", word: "اللغة", text: "تستخدم التقنيات الحديثة لحفظ المفردات والتعابير المحلية ضمن ذاكرة رقمية حساوية." },
-      { cat: "heritage", word: "الذاكرة", text: "تصبح ذاكرة الأحساء قاعدة معرفية مفتوحة يتعلم منها أبناء المستقبل عن المكان الذي صنع هويتهم." },
-      { cat: "heritage", word: "الأصالة", text: "تتطور الأحساء دون أن تتخلى عن العناصر التي تجعلها مختلفة ومميزة عن أي مدينة أخرى." },
-      { cat: "tech", word: "الذكاء الاصطناعي", text: "تستخدم الأحساء الذكاء الاصطناعي لفهم احتياجات المدينة وتحويل البيانات إلى حلول تخدم الإنسان." },
-      { cat: "tech", word: "الروبوتات", text: "تعمل الروبوتات في المجالات التي تحتاج دقة واستمرارية، بينما يبقى الإنسان صاحب القرار والابتكار." },
-      { cat: "tech", word: "البيانات", text: "تصبح بيانات الأحساء أساسًا لفهم المدينة وتحسين الخدمات واتخاذ قرارات أكثر دقة." },
-      { cat: "tech", word: "إنترنت الأشياء", text: "تتصل المنازل والمزارع والمرافق لتتبادل البيانات وتعمل كمنظومة واحدة أكثر كفاءة." },
-      { cat: "tech", word: "الأتمتة", text: "تقلل الأتمتة الأعمال المتكررة وتمنح الإنسان وقتًا أكبر للإبداع والتطوير." },
-      { cat: "tech", word: "الواقع الافتراضي", text: "يستطيع الزائر استكشاف تاريخ الأحساء وأماكنها المستقبلية من أي مكان عبر تجارب افتراضية غامرة." },
-      { cat: "tech", word: "الواقع المعزز", text: "يكشف الهاتف أو النظارة طبقات رقمية من تاريخ المكان بمجرد توجيهها نحو معلم حساوي." },
-      { cat: "tech", word: "التوأم الرقمي", text: "تمتلك الأحساء نسخة رقمية حية من مدينتها تساعد على محاكاة المشاريع وفهم آثار القرارات قبل تنفيذها." },
-      { cat: "tech", word: "الأمن السيبراني", text: "تحمي منظومة أمنية متقدمة البنية الرقمية للأحساء وتحافظ على ثقة سكانها وخدماتها." },
-      { cat: "tech", word: "الحوسبة", text: "توفر البنية الحوسبية المتقدمة أساسًا لتطوير الخدمات والبحث والابتكار داخل المنطقة." },
-      { cat: "tech", word: "التطبيقات", text: "تتحول الخدمات اليومية إلى تجارب رقمية أبسط تختصر الوقت وتضع احتياجات السكان في المقدمة." },
-      { cat: "tech", word: "الروابط الذكية", text: "تربط المنصات الرقمية خدمات الأحساء المختلفة في تجربة واحدة بدل تشتيت المستخدم بين أنظمة متعددة." },
-      { cat: "tech", word: "الأتمتة الزراعية", text: "تراقب الأنظمة الذكية المزارع وتساعد في الري والتغذية والمتابعة بدقة أعلى." },
-      { cat: "tech", word: "الاستشعار", text: "تتيح أجهزة الاستشعار مراقبة المياه والحرارة والتربة والهواء واتخاذ إجراءات استباقية." },
-      { cat: "tech", word: "المختبرات", text: "توفر المختبرات المتقدمة بيئة لتحويل أفكار أبناء الأحساء إلى نماذج وحلول قابلة للتطبيق." },
-      { cat: "tech", word: "الابتكار", text: "يصبح الابتكار جزءًا من ثقافة المجتمع، يبدأ من مشكلة محلية وينتهي بحل يمكن أن يخدم العالم." },
-      { cat: "tech", word: "التقنية", text: "تستخدم التقنية كوسيلة لتحسين حياة الإنسان، لا كغاية منفصلة عن احتياجات المجتمع." },
-      { cat: "tech", word: "البرمجة", text: "يجد المبرمجون في الأحساء مساحة لصناعة منتجات رقمية تعالج تحديات المنطقة بطرق جديدة." },
-      { cat: "tech", word: "الفضاء", text: "تدخل الأحساء عالم علوم الفضاء من خلال التعليم والبحث والتجارب التي تلهم جيلًا جديدًا من العلماء." },
-      { cat: "tech", word: "المستقبل", text: "يصبح المستقبل مشروعًا نصنعه اليوم من خلال المعرفة والابتكار والقرارات الذكية." },
-      { cat: "city", word: "المدينة", text: "تتطور الأحساء كمدينة ذكية تحافظ على طبيعة الواحة وتقدم خدمات تناسب حياة المستقبل." },
-      { cat: "city", word: "الأحياء", text: "تتحول الأحياء إلى مجتمعات مترابطة تتوفر فيها الخدمات الأساسية والمساحات العامة بالقرب من السكان." },
-      { cat: "city", word: "الإسكان", text: "توفر حلول الإسكان المستقبلية منازل مريحة وذكية وموفرة للطاقة ومناسبة للمناخ المحلي." },
-      { cat: "city", word: "المباني", text: "تصمم المباني لتستهلك موارد أقل وتوفر بيئة داخلية أكثر راحة للسكان." },
-      { cat: "city", word: "الحدائق", text: "تصبح الحدائق مساحات مجتمعية تجمع الطبيعة والرياضة والثقافة والتقنية." },
-      { cat: "city", word: "المساحات العامة", text: "تمنح الساحات العامة سكان الأحساء أماكن للقاء والتعلم والترفيه وصناعة الذكريات." },
-      { cat: "city", word: "المشاة", text: "تصبح الشوارع أكثر ملاءمة للمشاة، بحيث يمكن للإنسان أن يستمتع بالمدينة بدل أن يمر بها فقط." },
-      { cat: "city", word: "الدراجات", text: "تربط مسارات الدراجات أجزاء من المدينة وتوفر خيارًا صحيًا ومستدامًا للتنقل." },
-      { cat: "city", word: "النقل", text: "تعمل منظومة النقل المستقبلية على ربط مدن وقرى الأحساء بطريقة أسرع وأسهل وأكثر كفاءة." },
-      { cat: "city", word: "السيارات الكهربائية", text: "تصبح السيارات الكهربائية جزءًا من منظومة تنقل تقلل الانبعاثات وتدعم مستقبلًا أنظف." },
-      { cat: "city", word: "الطرق", text: "تستخدم الطرق الذكية البيانات لتحسين الحركة وتقليل الازدحام ورفع مستوى السلامة." },
-      { cat: "city", word: "الإضاءة", text: "تتكيف الإضاءة الذكية مع احتياجات الشوارع والمرافق لتوفير الطاقة وتحسين الأمان." },
-      { cat: "city", word: "السلامة", text: "تساعد الأنظمة الذكية على اكتشاف المخاطر والاستجابة للحوادث بسرعة أكبر لحماية السكان." },
-      { cat: "city", word: "الصحة", text: "تصبح الخدمات الصحية أقرب إلى الإنسان من خلال الوقاية والبيانات والتقنيات الطبية الحديثة." },
-      { cat: "city", word: "الرياضة", text: "تتحول الرياضة إلى جزء يومي من حياة المجتمع عبر مرافق ومسارات وبرامج متاحة للجميع." },
-      { cat: "city", word: "السعادة", text: "تقاس جودة المدينة بما تمنحه للإنسان من راحة وأمان وفرص وتجارب جميلة، لا بعدد مبانيها فقط." },
-      { cat: "city", word: "جودة الحياة", text: "تبني الأحساء بيئة تجعل العمل والتعلم والترفيه والطبيعة أجزاء متوازنة من الحياة اليومية." },
-      { cat: "city", word: "الوصول", text: "تصمم الخدمات والمرافق بحيث تكون أكثر سهولة واستخدامًا لمختلف فئات المجتمع." },
-      { cat: "city", word: "الشمول", text: "تصبح الأحساء مدينة يستطيع الجميع المشاركة في مستقبلها والاستفادة من فرصها." },
-      { cat: "city", word: "الراحة", text: "توظف التقنية والتصميم لفهم احتياجات السكان وصناعة حياة يومية أكثر سهولة." },
-      { cat: "society", word: "الشباب", text: "يصبح شباب الأحساء قوة محركة للمستقبل، من خلال المعرفة والمهارات والمبادرات التي تبدأ من المنطقة." },
-      { cat: "society", word: "المرأة", text: "تفتح الأحساء مساحات أوسع لمشاركة المرأة في الابتكار وريادة الأعمال والعلوم والصناعات الإبداعية." },
-      { cat: "society", word: "الطفل", text: "ينشأ أطفال الأحساء في بيئة تعلمهم الفضول والتجربة وصناعة الحلول منذ الصغر." },
-      { cat: "society", word: "الأسرة", text: "تحافظ المدينة على مكانة الأسرة من خلال أحياء وتجارب وخدمات تدعم الحياة الاجتماعية." },
-      { cat: "society", word: "المجتمع", text: "يتشارك المجتمع في صناعة مستقبل الأحساء بدل أن يكون مجرد متلقٍ للتغيير." },
-      { cat: "society", word: "التطوع", text: "يتحول التطوع إلى منظومة رقمية تربط أصحاب المهارات بالمبادرات التي تحتاج إلى جهودهم." },
-      { cat: "society", word: "المشاركة", text: "تتيح المنصات الذكية للسكان مشاركة أفكارهم وملاحظاتهم والمساهمة في تطوير مدينتهم." },
-      { cat: "society", word: "المعرفة", text: "تصبح المعرفة موردًا أساسيًا في الأحساء، متاحة للجميع وقابلة للتحول إلى مشاريع وحلول." },
-      { cat: "society", word: "المهارات", text: "يتعلم أبناء الأحساء مهارات تتغير مع الزمن حتى يبقوا مستعدين لفرص اقتصاد المستقبل." },
-      { cat: "society", word: "الإبداع", text: "تتحول الأفكار الإبداعية المحلية إلى منتجات ومشاريع قادرة على الوصول إلى أسواق أوسع." },
-      { cat: "society", word: "القيادة", text: "تصنع الأحساء جيلًا من القادة القادرين على الجمع بين فهم المكان ورؤية المستقبل." },
-      { cat: "society", word: "ريادة الأعمال", text: "تصبح الأفكار المحلية نواة لشركات ناشئة تعالج احتياجات الأحساء وتنافس خارجها." },
-      { cat: "society", word: "العمل", text: "تخلق القطاعات الجديدة فرصًا مهنية متنوعة تتناسب مع اقتصاد المعرفة والتقنية." },
-      { cat: "society", word: "الموهبة", text: "تجد المواهب الحساوية منصات ومساحات تساعدها على الظهور والتطور والوصول إلى جمهور عالمي." },
-      { cat: "society", word: "التعليم", text: "ينتقل التعليم من حفظ المعلومات إلى تجربة تبني مهارات التفكير والبحث وصناعة الحلول." },
-      { cat: "society", word: "الجامعة", text: "تصبح جامعات الأحساء مراكز للبحث والابتكار تربط المعرفة الأكاديمية باحتياجات المجتمع." },
-      { cat: "society", word: "البحث", text: "تتحول التحديات المحلية إلى موضوعات بحثية تنتج عنها حلول قابلة للتطبيق في الأحساء وغيرها." },
-      { cat: "society", word: "التدريب", text: "يحصل أبناء المنطقة على تدريب مستمر يواكب الوظائف والتقنيات التي سيحتاجها اقتصاد 2050." },
-      { cat: "society", word: "التعاون", text: "يجمع التعاون بين الحكومة والجامعة والمجتمع والقطاع الخاص لصناعة مشاريع ذات أثر حقيقي." },
-      { cat: "society", word: "الأثر", text: "يقاس نجاح مشاريع المستقبل بما تغيره في حياة الناس والبيئة والاقتصاد، وليس بحجمها فقط." },
-      { cat: "economy", word: "السياحة", text: "تصبح الأحساء وجهة عالمية تقدم تجربة تجمع الواحة والتراث والطبيعة والضيافة والتقنية." },
-      { cat: "economy", word: "السائح", text: "يعيش السائح تجربة شخصية تبدأ قبل وصوله وتستمر عبر رحلة ذكية داخل معالم الأحساء." },
-      { cat: "economy", word: "الضيافة", text: "تمتزج الضيافة الحساوية الأصيلة مع خدمات ذكية تجعل تجربة الزائر أكثر سهولة وخصوصية." },
-      { cat: "economy", word: "الفنادق", text: "تقدم الفنادق المستقبلية تجربة تجمع الراحة والتقنية والطابع المحلي في تفاصيلها." },
-      { cat: "economy", word: "المطاعم", text: "تصبح المطاعم الحساوية سفراء للمطبخ المحلي وتقدم أطباق المنطقة بأساليب تصل إلى العالم." },
-      { cat: "economy", word: "المطبخ الحساوي", text: "ينتقل المطبخ الحساوي من المائدة المحلية إلى علامة ثقافية وسياحية يعرفها العالم." },
-      { cat: "economy", word: "الأسواق", text: "تجمع أسواق الأحساء بين المنتجات المحلية والتجارة الرقمية لتصل صناعة المنطقة إلى عملاء حول العالم." },
-      { cat: "economy", word: "التجارة", text: "تدعم المنصات الرقمية نمو التجارة المحلية وتفتح للمنتجات الحساوية أبواب أسواق جديدة." },
-      { cat: "economy", word: "الاستثمار", text: "توفر الأحساء بيئة جاذبة للاستثمار في التقنية والسياحة والزراعة والصناعات الإبداعية." },
-      { cat: "economy", word: "الشركات الناشئة", text: "تنطلق شركات ناشئة من الأحساء لتطوير حلول محلية قادرة على المنافسة في الأسواق العالمية." },
-      { cat: "economy", word: "الاقتصاد", text: "يتنوع اقتصاد الأحساء ليجمع بين الزراعة والسياحة والتقنية والصناعة والاقتصاد الإبداعي." },
-      { cat: "economy", word: "الصناعات الإبداعية", text: "تتحول الثقافة والفن والتصميم والمحتوى إلى قطاعات اقتصادية تصنع فرصًا جديدة لأبناء المنطقة." },
-      { cat: "economy", word: "الحرف اليدوية", text: "تتحول الحرف الحساوية إلى منتجات معاصرة تحافظ على أصلها وتصل إلى جمهور عالمي." },
-      { cat: "economy", word: "المهرجانات", text: "تصبح الفعاليات الحساوية منصات تجمع الثقافة والترفيه والفن والتقنية وتستقطب الزوار من مختلف الأماكن." },
-      { cat: "economy", word: "الفعاليات", text: "تستفيد فعاليات الأحساء من التقنيات التفاعلية لتقديم تجارب يصعب نسيانها." },
-      { cat: "economy", word: "المسارات السياحية", text: "ترتبط معالم الأحساء بمسارات ذكية تجعل اكتشاف المنطقة رحلة مترابطة بدل زيارات منفصلة." },
-      { cat: "economy", word: "التجربة", text: "لا يزور الإنسان الأحساء لمشاهدة مكان فقط، بل ليعيش قصة تبدأ من التراث وتمتد إلى المستقبل." },
-      { cat: "economy", word: "العلامة التجارية", text: "تحمل الأحساء هوية سياحية واضحة تجعل اسمها حاضرًا في خريطة الوجهات العالمية." },
-      { cat: "economy", word: "التصدير", text: "تصل المنتجات الحساوية إلى الأسواق العالمية بجودة وهوية تحافظ على ارتباطها بمصدرها." },
-      { cat: "economy", word: "الاقتصاد المحلي", text: "يبقى جزء أكبر من القيمة الاقتصادية داخل الأحساء من خلال دعم المنتج والمشروع والمواهب المحلية." },
-      { cat: "future", word: "2050", text: "في 2050، تكون الأحساء مثالًا على مدينة تطورت دون أن تفقد ذاكرتها وروحها." },
-      { cat: "future", word: "الغد", text: "يبدأ غد الأحساء من القرارات التي نصنعها اليوم في التعليم والبيئة والتقنية والمجتمع." },
-      { cat: "future", word: "الرؤية", text: "تتحول رؤية الأحساء إلى مشاريع ملموسة يشعر بأثرها الإنسان في حياته اليومية." },
-      { cat: "future", word: "التحول", text: "يصبح التحول الرقمي وسيلة لإعادة تصميم الخدمات حول الإنسان وليس حول الأنظمة." },
-      { cat: "future", word: "التطور", text: "تتطور الأحساء باستمرار مع الحفاظ على العناصر التي تجعلها مكانًا له شخصيته الخاصة." },
-      { cat: "future", word: "الاختراع", text: "يجد المخترعون بيئة تسمح بتحويل الأفكار الجريئة إلى نماذج واختبارات وحلول حقيقية." },
-      { cat: "future", word: "المستقبل الأخضر", text: "يجتمع النمو الاقتصادي مع حماية الموارد الطبيعية لبناء مستقبل أكثر توازنًا للأحساء." },
-      { cat: "future", word: "المدن الذكية", text: "تستخدم المدينة البيانات والتقنية لتحسين القرارات والخدمات دون أن تفقد طابعها الإنساني." },
-      { cat: "future", word: "الطاقة النظيفة", text: "تعتمد الأحساء بشكل أكبر على مصادر طاقة نظيفة تناسب طبيعتها وتقلل أثرها البيئي." },
-      { cat: "future", word: "الاقتصاد الدائري", text: "تتحول الموارد من نموذج الاستخدام ثم التخلص إلى منظومة تعيد الاستخدام والإنتاج والاستفادة." },
-      { cat: "future", word: "التقنية الخضراء", text: "تستخدم التقنيات الحديثة لتقليل استهلاك الطاقة والمياه والمواد في القطاعات المختلفة." },
-      { cat: "future", word: "الرواد", text: "يجد رواد الأعمال في الأحساء بيئة تساعدهم على تحويل المشكلات اليومية إلى فرص ابتكار." },
-      { cat: "future", word: "الأفكار", text: "قد تبدأ فكرة مستقبلية من كلمة بسيطة، لكنها تصبح ذات قيمة عندما تجد من يطوّرها ويطبقها." },
-      { cat: "future", word: "المختبر الحساوي", text: "تتحول الأحساء إلى مساحة مفتوحة لتجربة حلول جديدة في الزراعة والبيئة والمدينة والتقنية." },
-      { cat: "extra", word: "القهوة", text: "تصبح القهوة جزءًا من تجربة حساوية حديثة تجمع الضيافة المحلية مع المقاهي الإبداعية والمجتمعات الثقافية." },
-      { cat: "extra", word: "التصوير", text: "توثق عدسات أبناء الأحساء تحول الواحة وتحكي للعالم قصة مدينة تتغير دون أن تنسى نفسها." },
-      { cat: "extra", word: "التصميم", text: "يصبح التصميم أداة لتحويل هوية الأحساء إلى تجارب ومنتجات وواجهات تعبر عن المستقبل." },
-      { cat: "extra", word: "المحتوى", text: "يصنع أبناء الأحساء محتوى رقميًا يعرّف العالم بثقافة المنطقة بعيون الجيل الجديد." },
-      { cat: "extra", word: "الإعلام", text: "يتحول الإعلام المحلي إلى منصة تحكي قصص النجاح والتغيير وتربط الأحساء بجمهور عالمي." },
-      { cat: "extra", word: "الألعاب", text: "تستخدم صناعة الألعاب قصص ومعالم الأحساء لبناء عوالم رقمية تعرف الأجيال بتاريخ منطقتها بطريقة ممتعة." },
-      { cat: "extra", word: "السينما", text: "تصبح الأحساء موقعًا لصناعة أفلام وقصص بصرية تعكس طبيعة المكان وثقافته ومستقبله." },
-      { cat: "extra", word: "الكتاب", text: "تحفظ الكتب والكتابة تفاصيل الذاكرة الحساوية وتمنحها فرصة للوصول إلى قراء جدد." },
-      { cat: "extra", word: "القراءة", text: "تصبح المكتبات مساحات تجمع القراءة والتقنية والحوار والتعلم المستمر." },
-      { cat: "extra", word: "الأطفال", text: "تتحول مساحات الأطفال إلى بيئات تفاعلية تعلمهم عن الواحة والتقنية والاستدامة من خلال اللعب." },
-      { cat: "extra", word: "الأحلام", text: "تبدأ المدن المستقبلية من أحلام تبدو بعيدة، ثم تتحول خطوة بعد خطوة إلى مشاريع يمكن رؤيتها." },
-      { cat: "extra", word: "السؤال", text: "كل سؤال عن مستقبل الأحساء يمكن أن يكون بداية لفكرة جديدة تستحق التجربة." },
-      { cat: "extra", word: "الإنسان", text: "يبقى الإنسان محور كل تقنية ومشروع وقرار، لأن مستقبل الأحساء في النهاية هو مستقبل أهلها." },
-      { cat: "extra", word: "الحسا", text: "تبقى الحسا حساك؛ مكانًا يحمل ذاكرة أهله ويتقدم بثقة نحو مستقبل يصنعه أبناؤه." },
-      { cat: "extra", word: "فكرة", text: "قد تبدأ رؤية الأحساء 2050 بكلمة واحدة، لكن كل كلمة يمكن أن تفتح بابًا لمستقبل كامل." }
-    ];
+    let currentLang = 'ar';
+    let currentWord = 'النخيل';
 
-    const categories = [
+    const translations = {
+      ar: {
+        brandTitle: "أساس حساوي",
+        brandSub: "رؤية الأحساء 2050",
+        heroBadge: "رؤية الأحساء • 2050",
+        heroHead: "كيف تتخيل الأحساء<br><span>في المستقبل؟</span>",
+        heroDesc: "استكشف أفق الأحساء عام 2050 عبر 150 رؤية؛ اختر التصنيف ثم اضغط على أي كلمة لعرض رؤيتها المستقبلية مباشرة.",
+        guideBanner: "اضغط على أي كلمة من القائمة بالأسفل لاستكشاف الرؤية:",
+        outputTitle: "رؤية الأحساء 2050",
+        treeTitle: "منصاتي وأعمالي",
+        treeSub: "امسح الكود عبر الكاميرا للوصول السريع إلى كافة الروابط والمشاريع",
+        expo: "من قلب الأحساء، نفتح نافذة على المستقبل.<br>معرض اليوم الوطني السعودي 2026",
+        authorName: "أسيل السيف",
+        authorRole: "مصممة تقنية وجرافيكس",
+        authorBio: "طالبة نظم معلومات حاسوبية مهتمة بدمج التقنية والإبداع لصناعة تجارب رقمية وبصرية مميزة. أعمل في التصميم وصناعة المحتوى، وأهتم بالتقديم والتحدث والتصوير، وأسعى دائماً لتحويل الأفكار إلى تجارب واضحة ومؤثرة تجمع بين التقنية والإبداع."
+      },
+      en: {
+        brandTitle: "Asas Hasawi",
+        brandSub: "Al-Ahsa Vision 2050",
+        heroBadge: "Al-Ahsa Vision • 2050",
+        heroHead: "How do you imagine Al-Ahsa<br><span>in the Future?</span>",
+        heroDesc: "Explore Al-Ahsa's 2050 future across 150 visions; select a category and tap any word to unveil its futuristic perspective.",
+        guideBanner: "Click on any word below to reveal its 2050 vision:",
+        outputTitle: "Al-Ahsa Vision 2050",
+        treeTitle: "My Platforms & Works",
+        treeSub: "Scan the code with your camera for instant access to all links & projects",
+        expo: "From the heart of Al-Ahsa, framing a window into tomorrow.<br>Saudi National Day Exhibition 2026",
+        authorName: "Aseel Alsaif",
+        authorRole: "Tech & Graphic Designer",
+        authorBio: "Computer Information Systems student passionate about blending technology and visual creativity to craft distinctive digital experiences. Active in design, content creation, presentation, and photography."
+      }
+    };
+
+    const categoriesAr = [
       { id: "all", name: "الكل (150)" },
       { id: "nature", name: "الواحة والطبيعة" },
       { id: "heritage", name: "التراث والثقافة" },
@@ -812,12 +654,108 @@
       { id: "extra", name: "منوعات حساوية" }
     ];
 
+    const categoriesEn = [
+      { id: "all", name: "All (150)" },
+      { id: "nature", name: "Oasis & Nature" },
+      { id: "heritage", name: "Heritage & Culture" },
+      { id: "tech", name: "Tech & AI" },
+      { id: "city", name: "City & Living" },
+      { id: "society", name: "People & Community" },
+      { id: "economy", name: "Tourism & Economy" },
+      { id: "future", name: "Future & Innovation" },
+      { id: "extra", name: "Hasawi Highlights" }
+    ];
+
+    const visionsDatabase = [
+      { cat: "nature", word: "النخيل", wordEn: "Date Palms", text: "في 2050، تصبح نخيل الأحساء جزءًا من منظومة زراعية ذكية تحافظ على إرث الواحة وتزيد كفاءة الإنتاج والمياه.", textEn: "By 2050, Al-Ahsa's date palms become integral to a smart agritech grid, preserving oasis heritage while optimizing yield and water efficiency." },
+      { cat: "nature", word: "الواحة", wordEn: "The Oasis", text: "تبقى واحة الأحساء قلب المكان، لكن بقدرات ذكية تجعل الطبيعة والزراعة والمدينة تعمل بتناغم.", textEn: "The oasis remains the core of the region, empowered by intelligent systems uniting nature, agriculture, and urban living in harmony." },
+      { cat: "nature", word: "الماء", wordEn: "Water", text: "تتحول إدارة المياه في الأحساء إلى نموذج ذكي يوازن بين احتياجات السكان والزراعة ويحافظ على المورد للأجيال القادمة.", textEn: "Water management transforms into an autonomous model balancing civic and farming demands, sustaining resources for future generations." },
+      { cat: "nature", word: "العيون", wordEn: "Natural Springs", text: "تُعاد قراءة عيون الأحساء كجزء من منظومة طبيعية وسياحية تحكي قصة الماء الذي صنع حياة الواحة.", textEn: "Historic natural springs are reimagined as ecological landmarks narrating the story of water that gave life to the oasis." },
+      { cat: "nature", word: "الزراعة", wordEn: "Agriculture", text: "تجمع زراعة الأحساء بين المعرفة المتوارثة والتقنيات الحديثة لإنتاج غذاء أكثر كفاءة واستدامة.", textEn: "Farming in Al-Ahsa merges generational wisdom with automated intelligence for resilient and sustainable food production." },
+      { cat: "nature", word: "التربة", wordEn: "Soil", text: "تقنيات الاستشعار والبيانات تساعد مزارعي الأحساء على فهم التربة وتحسينها بدل الاعتماد على التخمين.", textEn: "Advanced sensors and real-time data guide farmers to optimize soil health and eliminate guesswork." },
+      { cat: "nature", word: "النخلة", wordEn: "The Palm Tree", text: "تظل النخلة رمزًا حساويًا حاضرًا في المستقبل، من المزرعة التقليدية إلى الزراعة الرقمية.", textEn: "The palm tree remains the quintessential symbol of Al-Ahsa, evolving from classic groves to precision digital agriculture." },
+      { cat: "nature", word: "التمور", wordEn: "Dates", text: "تتحول تمور الأحساء إلى منتج عالمي عالي القيمة تدعمه تقنيات الإنتاج والتصنيع والتسويق الذكي.", textEn: "Al-Ahsa dates evolve into a premier global luxury export supported by automated processing and smart branding." },
+      { cat: "nature", word: "المزارع", wordEn: "The Farmer", text: "يصبح المزارع شريكًا في التقنية، يستخدم البيانات والأدوات الذكية لاتخاذ قرارات أدق وأسرع.", textEn: "Farmers become tech-driven innovators, harnessing AI and analytics for faster and more precise decisions." },
+      { cat: "nature", word: "البيئة", wordEn: "Environment", text: "مستقبل الأحساء يبني علاقة متوازنة بين النمو العمراني وحماية البيئة الطبيعية للواحة.", textEn: "Al-Ahsa's future harmonizes urban expansion with strict preservation of the oasis canopy." },
+      { cat: "nature", word: "التشجير", wordEn: "Afforestation", text: "تمتد المساحات الخضراء في الأحساء لتصنع مدنًا أكثر راحة وتخفف أثر الحرارة وتحسن جودة الحياة.", textEn: "Vast green corridors expand across cities to cool the climate and enhance wellbeing." },
+      { cat: "nature", word: "المناخ", wordEn: "Climate", text: "تصمم الأحساء حلولها المستقبلية بما يتناسب مع مناخها المحلي بدل استيراد نماذج لا تناسب طبيعتها.", textEn: "Al-Ahsa creates native microclimate architectural solutions tailored specifically to its geographical environment." },
+      { cat: "nature", word: "الشمس", wordEn: "Solar Energy", text: "تتحول شمس الأحساء الوفيرة إلى مصدر طاقة يدعم المنازل والمزارع والمرافق المستقبلية.", textEn: "Abundant regional sunlight powers clean microgrids for sustainable homes and rural farming." },
+      { cat: "nature", word: "الهواء", wordEn: "Air Quality", text: "تساعد تقنيات الرصد البيئي في بناء فهم لحظي لجودة الهواء واتخاذ إجراءات تحافظ على صحة البيئة.", textEn: "IoT sensors deliver real-time atmospheric tracking to actively preserve environmental health." },
+      { cat: "nature", word: "التنوع الحيوي", wordEn: "Biodiversity", text: "تحافظ الأحساء على تنوعها الطبيعي وتستخدم التقنية لمراقبة الأنواع والموائل وحمايتها.", textEn: "Digital monitoring programs actively safeguard endemic wildlife and historic oasis flora." },
+      { cat: "nature", word: "الصحراء", wordEn: "Desert Landscapes", text: "تتحول الصحراء المحيطة بالأحساء من مساحة مهملة إلى جزء من منظومة سياحية وبيئية مستقبلية.", textEn: "Surrounding dunes transform into sustainable desert ecotourism zones integrated with renewable research." },
+      { cat: "nature", word: "النظم البيئية", wordEn: "Ecosystems", text: "تتكامل الواحة والصحراء والمناطق العمرانية ضمن رؤية واحدة تحمي التوازن الطبيعي للأحساء.", textEn: "Oasis groves, deserts, and smart districts unite in a balanced and synchronized ecosystem." },
+      { cat: "nature", word: "الاستدامة", wordEn: "Sustainability", text: "تصبح الاستدامة أسلوبًا في تصميم المدينة والزراعة والطاقة والنقل، لا مجرد شعار للمستقبل.", textEn: "Sustainability serves as the foundational design philosophy across architecture, transport, and resource grids." },
+      { cat: "nature", word: "إعادة التدوير", wordEn: "Circular Recycling", text: "تتحول النفايات إلى موارد جديدة من خلال منظومة فرز وإعادة تدوير ذكية تبدأ من المنزل وتنتهي بمنتج جديد.", textEn: "Automated zero-waste systems turn urban outputs into clean resources and bio-composites." },
+      { cat: "nature", word: "الغذاء", wordEn: "Food Systems", text: "تبني الأحساء منظومة غذائية محلية أكثر ذكاءً تربط المزارع بالمستهلك وتقلل الهدر.", textEn: "Hyperlocal smart supply chains connect urban tables directly with oasis groves to eliminate food waste." },
+
+      { cat: "heritage", word: "التراث", wordEn: "Heritage", text: "لا يبقى تراث الأحساء في الماضي؛ بل ينتقل إلى المستقبل عبر تجارب رقمية تعيد تقديمه للأجيال.", textEn: "Heritage leaps into tomorrow through immersive spatial computing and interactive exhibits." },
+      { cat: "heritage", word: "الهوية", wordEn: "Identity", text: "تحافظ الأحساء على هويتها وهي تتطور، لتثبت أن الحداثة لا تعني فقدان الجذور.", textEn: "Al-Ahsa proves that state-of-the-art modernity flourishes best when deeply rooted in authenticity." },
+      { cat: "heritage", word: "القيصرية", wordEn: "Qaisariya Souq", text: "تتحول القيصرية إلى تجربة تجارية وثقافية تجمع روح السوق التاريخي مع تقنيات المستقبل.", textEn: "Souq Al-Qaisariya combines timeless merchant bazaar spirit with frictionless contactless commerce." },
+      { cat: "heritage", word: "جبل القارة", wordEn: "Al-Qarah Mountain", text: "يصبح جبل القارة بوابة لتجربة سياحية تجمع الجيولوجيا والطبيعة والتقنية في قصة واحدة.", textEn: "Mount Al-Qarah becomes a global beacon connecting ancient geology and spatial visual storytelling." },
+      { cat: "heritage", word: "مسجد جواثا", wordEn: "Jawatha Mosque", text: "يُعاد تقديم مسجد جواثا للأجيال الجديدة بتجارب رقمية تشرح مكانته التاريخية وتربط الماضي بالحاضر.", textEn: "Jawatha Mosque is highlighted via digital archives reflecting its early Islamic prominence." },
+      { cat: "heritage", word: "الحرف", wordEn: "Crafts", text: "تنتقل الحرف الأحسائية إلى أسواق العالم من خلال منصات رقمية تحفظ مهارات صانعيها وتدعم منتجاتهم.", textEn: "Local artisanal crafts scale globally through digital verification and fair-trade creator platforms." },
+      { cat: "heritage", word: "السدو", wordEn: "Sadu Weaving", text: "يتحول السدو إلى لغة تصميم معاصرة تستلهم الأنماط المحلية دون أن تفقد أصلها.", textEn: "Geometric Sadu weaving evolves into an architectural and digital motif inspiring contemporary interfaces." },
+      { cat: "heritage", word: "الفخار", wordEn: "Pottery", text: "يجتمع الفخار التقليدي مع التصميم الحديث ليصبح جزءًا من اقتصاد إبداعي حساوي جديد.", textEn: "Traditional clay craftsmanship merges with 3D ceramic prototyping in a modern creative economy." },
+      { cat: "heritage", word: "العمارة", wordEn: "Architecture", text: "تستلهم عمارة الأحساء المستقبلية تفاصيلها من البيئة المحلية وتعيد تفسيرها بلغة معمارية حديثة.", textEn: "Local vernacular architecture informs futuristic, energy-efficient building skins and breezeways." },
+      { cat: "heritage", word: "البيوت الطينية", wordEn: "Mud-brick Homes", text: "تتحول البيوت الطينية من آثار صامتة إلى مساحات حية للتعلم والثقافة والتجارب الرقمية.", textEn: "Historical mud homes become dynamic co-working hubs and living educational spaces." },
+
+      { cat: "tech", word: "الذكاء الاصطناعي", wordEn: "Artificial Intelligence", text: "تستخدم الأحساء الذكاء الاصطناعي لفهم احتياجات المدينة وتحويل البيانات إلى حلول تخدم الإنسان.", textEn: "AI interprets urban and environmental data to deliver human-centered public services." },
+      { cat: "tech", word: "الروبوتات", wordEn: "Robotics", text: "تعمل الروبوتات في المجالات التي تحتاج دقة واستمرارية، بينما يبقى الإنسان صاحب القرار والابتكار.", textEn: "Robots manage repetitive tasks while people focus on creative enterprise and strategic innovation." },
+      { cat: "tech", word: "البيانات", wordEn: "Big Data", text: "تصبح بيانات الأحساء أساسًا لفهم المدينة وتحسين الخدمات واتخاذ قرارات أكثر دقة.", textEn: "Data assets empower smarter governance, efficient logistics, and resilient infrastructure." },
+      { cat: "tech", word: "إنترنت الأشياء", wordEn: "IoT", text: "تتصل المنازل والمزارع والمرافق لتتبادل البيانات وتعمل كمنظومة واحدة أكثر كفاءة.", textEn: "Connected infrastructure links homes, farming plots, and municipal systems into one seamless grid." },
+      { cat: "tech", word: "الواقع الافتراضي", wordEn: "Virtual Reality", text: "يستطيع الزائر استكشاف تاريخ الأحساء وأماكنها المستقبلية من أي مكان عبر تجارب افتراضية غامرة.", textEn: "Global visitors explore Al-Ahsa's historical epochs and 2050 architecture through metaverse experiences." },
+
+      { cat: "city", word: "المدينة", wordEn: "Smart City", text: "تتطور الأحساء كمدينة ذكية تحافظ على طبيعة الواحة وتقدم خدمات تناسب حياة المستقبل.", textEn: "Al-Ahsa expands as an eco-smart metropolis celebrating its UNESCO heritage with ultra-modern services." },
+      { cat: "city", word: "النقل", wordEn: "Mobility", text: "تعمل منظومة النقل المستقبلية على ربط مدن وقرى الأحساء بطريقة أسرع وأسهل وأكثر كفاءة.", textEn: "Autonomous electric transit networks seamlessly interlink historical towns and modern centers." },
+      { cat: "city", word: "جودة الحياة", wordEn: "Quality of Life", text: "تبني الأحساء بيئة تجعل العمل والتعلم والترفيه والطبيعة أجزاء متوازنة من الحياة اليومية.", textEn: "Urban environments balance professional fulfillment, community gathering, and natural recreation." },
+
+      { cat: "society", word: "الشباب", wordEn: "Youth", text: "يصبح شباب الأحساء قوة محركة للمستقبل، من خلال المعرفة والمهارات والمبادرات التي تبدأ من المنطقة.", textEn: "Young innovators drive the region forward with cutting-edge technical skills and community ventures." },
+      { cat: "society", word: "التعليم", wordEn: "Education", text: "ينتقل التعليم من حفظ المعلومات إلى تجربة تبني مهارات التفكير والبحث وصناعة الحلول.", textEn: "Learning evolves into hands-on innovation labs nurturing design thinking and problem solving." },
+
+      { cat: "economy", word: "السياحة", wordEn: "Tourism", text: "تصبح الأحساء وجهة عالمية تقدم تجربة تجمع الواحة والتراث والطبيعة والضيافة والتقنية.", textEn: "The region thrives as an international destination harmonizing heritage, natural wonder, and modern hospitality." },
+      { cat: "economy", word: "المطبخ الحساوي", wordEn: "Hasawi Cuisine", text: "ينتقل المطبخ الحساوي من المائدة المحلية إلى علامة ثقافية وسياحية يعرفها العالم.", textEn: "Traditional Hasawi gastronomic heritage gains Michelin-recognized global prestige." },
+
+      { cat: "future", word: "2050", wordEn: "Year 2050", text: "في 2050، تكون الأحساء مثالًا على مدينة تطورت دون أن تفقد ذاكرتها وروحها.", textEn: "By 2050, Al-Ahsa stands as the archetype of a futuristic city that cherished its living soul." },
+      { cat: "future", word: "المدن الذكية", wordEn: "Smart Cities", text: "تستخدم المدينة البيانات والتقنية لتحسين القرارات والخدمات دون أن تفقد طابعها الإنساني.", textEn: "Technology elevates human connection rather than overshadowing it." },
+
+      { cat: "extra", word: "القهوة", wordEn: "Saudi Coffee", text: "تصبح القهوة جزءًا من تجربة حساوية حديثة تجمع الضيافة المحلية مع المقاهي الإبداعية والمجتمعات الثقافية.", textEn: "Saudi coffee anchors contemporary creative cafes and cultural networking venues across the oasis." },
+      { cat: "extra", word: "الحسا", wordEn: "Al-Hasa", text: "تبقى الحسا حساك؛ مكانًا يحمل ذاكرة أهله ويتقدم بثقة نحو مستقبل يصنعه أبناؤه.", textEn: "Al-Hasa remains home: safeguarding the memory of its ancestors while confidently forging its destiny." }
+    ];
+
     let currentCategory = "all";
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      const rootHtml = document.documentElement;
+      rootHtml.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      rootHtml.setAttribute('lang', currentLang);
+
+      const t = translations[currentLang];
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'العربية | English' : 'English | العربية';
+      document.getElementById('txtBrandTitle').textContent = t.brandTitle;
+      document.getElementById('txtBrandSub').textContent = t.brandSub;
+      document.getElementById('txtHeroBadge').textContent = t.heroBadge;
+      document.getElementById('txtHeroHead').innerHTML = t.heroHead;
+      document.getElementById('txtHeroDesc').textContent = t.heroDesc;
+      document.getElementById('txtGuideBanner').textContent = t.guideBanner;
+      document.getElementById('outputTitle').textContent = t.outputTitle;
+      document.getElementById('txtTreeTitle').textContent = t.treeTitle;
+      document.getElementById('txtTreeSub').textContent = t.treeSub;
+      document.getElementById('txtExpo').innerHTML = t.expo;
+      document.getElementById('txtAuthorName').textContent = t.authorName;
+      document.getElementById('txtAuthorRole').textContent = t.authorRole;
+      document.getElementById('txtAuthorBio').textContent = t.authorBio;
+
+      initCategories();
+      renderWordsList();
+      updateActiveVision();
+    }
 
     function initCategories() {
       const bar = document.getElementById("categoriesBar");
       bar.innerHTML = "";
-      categories.forEach(cat => {
+      const list = currentLang === 'ar' ? categoriesAr : categoriesEn;
+      list.forEach(cat => {
         const chip = document.createElement("button");
         chip.className = `category-chip ${cat.id === currentCategory ? 'active' : ''}`;
         chip.textContent = cat.name;
@@ -840,82 +778,36 @@
 
       filtered.forEach(item => {
         const badge = document.createElement("span");
-        badge.className = "word-badge";
-        badge.textContent = item.word;
+        const wordText = currentLang === 'ar' ? item.word : (item.wordEn || item.word);
+        badge.className = `word-badge ${item.word === currentWord ? 'active-badge' : ''}`;
+        badge.textContent = wordText;
         badge.onclick = () => {
-          document.getElementById("searchInput").value = item.word;
-          showVision(item.word, item.text);
+          currentWord = item.word;
+          document.querySelectorAll('.word-badge').forEach(b => b.classList.remove('active-badge'));
+          badge.classList.add('active-badge');
+          showVision(wordText, currentLang === 'ar' ? item.text : (item.textEn || item.text));
         };
         grid.appendChild(badge);
       });
     }
 
     function showVision(word, text) {
-      const card = document.getElementById("outputCard");
       document.getElementById("outputBadge").textContent = word;
       document.getElementById("outputContent").textContent = text;
-      card.style.display = "block";
+      const card = document.getElementById("outputCard");
       card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      document.getElementById("suggestionsBox").style.display = "none";
     }
 
-    function handleSearchInput() {
-      const val = document.getElementById("searchInput").value.trim().toLowerCase();
-      const box = document.getElementById("suggestionsBox");
-
-      if (!val) {
-        box.style.display = "none";
-        return;
-      }
-
-      const matches = visionsDatabase.filter(item => item.word.toLowerCase().includes(val));
-      if (matches.length > 0) {
-        box.innerHTML = "";
-        matches.slice(0, 7).forEach(m => {
-          const div = document.createElement("div");
-          div.className = "suggestion-item";
-          div.textContent = m.word;
-          div.onclick = () => {
-            document.getElementById("searchInput").value = m.word;
-            showVision(m.word, m.text);
-          };
-          box.appendChild(div);
-        });
-        box.style.display = "block";
-      } else {
-        box.style.display = "none";
-      }
+    function updateActiveVision() {
+      const found = visionsDatabase.find(item => item.word === currentWord) || visionsDatabase[0];
+      const word = currentLang === 'ar' ? found.word : (found.wordEn || found.word);
+      const text = currentLang === 'ar' ? found.text : (found.textEn || found.text);
+      showVision(word, text);
     }
-
-    function submitSearch() {
-      const val = document.getElementById("searchInput").value.trim();
-      if (!val) return;
-
-      const found = visionsDatabase.find(item => item.word.toLowerCase() === val.toLowerCase());
-      if (found) {
-        showVision(found.word, found.text);
-      } else {
-        const generatedVision = `في عام 2050، تُعيد الأحساء صياغة مفهوم «${val}» ليتحول إلى محور ذكي ومستدام يلتقي فيه عبق الواحة التاريخي مع أحدث آفاق التقنية، مما يعزز ريادة الأحساء العالمية ويخدم أبناءها وزوارها بحلول استباقية تجمع الأصالة بالمستقبل.`;
-        showVision(val, generatedVision);
-      }
-    }
-
-    function handleKey(e) {
-      if (e.key === "Enter") submitSearch();
-    }
-
-    function toggleLanguage() {
-      alert("النسخة الإنجليزية مجهزة مع التحديث القادم!");
-    }
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest('.search-panel')) {
-        document.getElementById("suggestionsBox").style.display = "none";
-      }
-    });
 
     initCategories();
     renderWordsList();
+    updateActiveVision();
   </script>
 </body>
 </html>
